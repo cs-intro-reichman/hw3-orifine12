@@ -51,9 +51,7 @@ public class Anagram {
        }
     else
       return false;
-	  
-
-}
+     }
 
 	
 	   
@@ -79,8 +77,22 @@ public class Anagram {
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
-	public static String randomAnagram(String str) {
-		// Replace the following statement with your code
-		return "";
+	public static String randomAnagram(String str) 
+	{
+		String word = str;
+		String newWord = "";
+		char c;
+		double newIndex;
+ 
+		while (isAnagram(word, newWord) == false)
+		{
+		for (int i = 0; i < word.length(); i++)
+		 {
+           newIndex = (Math.random() * i * 10) - 1;
+		   c = word.charAt((int) newIndex);
+		   newWord += c;
+		 }
+		}
+		return newWord;
 	}
 }
