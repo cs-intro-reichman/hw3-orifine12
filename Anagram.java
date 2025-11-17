@@ -79,20 +79,32 @@ public class Anagram {
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) 
 	{
-		String word = str;
-		String newWord = "";
-		char c;
-		double newIndex;
- 
-		while (isAnagram(word, newWord) == false)
-		{
-		for (int i = 0; i < word.length(); i++)
-		 {
-           newIndex = (Math.random() * i * 10) - 1;
-		   c = word.charAt((int) newIndex);
-		   newWord += c;
-		 }
-		}
-		return newWord;
-	}
+	  String word = str;
+    String newWord = "";
+    char c;
+    int newIndex;
+
+    // We "have to" use isAnagram, so we keep this while.
+    // It will run until newWord is an anagram of word.
+    while (!isAnagram(word, newWord))
+    {
+        newWord = ""; // reset for each attempt
+
+        // make a mutable copy of the remaining characters
+        StringBuilder temp = new StringBuilder(word);
+
+        for (int i = 0; i < word.length(); i++)
+        {
+            // pick a random valid index in the remaining characters
+            newIndex = (int)(Math.random() * temp.length());
+            c = temp.charAt(newIndex);
+            newWord += c;
+
+            // remove the used character so it won't be selected again
+            temp.deleteCharAt(newIndex);
+        }
+    }
+    return newWord;
 }
+}
+
