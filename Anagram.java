@@ -71,7 +71,7 @@ public class Anagram {
       }
 
     }
-    System.out.println(newWord);
+    
 	return newWord;
 	} 
 	   
