@@ -25,7 +25,7 @@ public class LoanCalc {
 		double bisPayment = bisectionSolver(loan, rate, n, epsilon);
         System.out.println((int) bisPayment);
 		System.out.println("number of iterations: " + iterationCounter);
-		System.out.println("end balance: " + endBalance(loan, rate, n, epsilon));
+		System.out.println("end balance: " + endBalance(loan, rate, n, bisPayment));
 	}
 	
 	// Computes the ending balance of a loan, given the loan amount, the periodical
