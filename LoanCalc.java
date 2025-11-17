@@ -72,13 +72,13 @@ public class LoanCalc {
     double g = L + H /2;
       while (L - H > epsilon)
 	  {
-         if (endBalance(loan, rate, n, n) >= epsilon)
+         if (endBalance(loan, rate, n, n) > 0)
 		 {
 			L = g;
 		 } 
 		 else
 		  H = g;
-		 g =  (L + H) / 2;
+		 g = (L + H) / 2;
 	  }
 	  return g;
 
