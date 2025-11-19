@@ -24,23 +24,20 @@ public class Algebra {  	public static void main(String args[]) {
 	// Returns x1 + x2
 	public static int plus(int x1, int x2)
 	 {
-		int sum = x1;
-		if (x2 > 0) 
-		{
-            for (int i = 0; i < x2; i++)
-			 {
-            sum++;          
-             }
-        } 
-		else 
-		 if (x2 < 0) 
-		 {
-           for (int i = x2; i < 0; i++) 
-			{
-            sum--;          
-            }
-         }
-	    return sum;
+		 int result = x1;
+
+    if (x2 > 0) {
+        while (x2 > 0) {
+            result++;   // move result right
+            x2--;       // move x2 toward 0
+        }
+    } else if (x2 < 0) {
+        while (x2 < 0) {
+            result--;   // move result left
+            x2++;       // move x2 toward 0
+        }
+    } 
+    return result;
 	 }
 
 	// Returns x1 - x2
