@@ -71,7 +71,6 @@ public class Anagram {
       }
 
     }
-    
 	return newWord;
 	} 
 	   
@@ -79,7 +78,7 @@ public class Anagram {
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) 
 	{
-	  String word = str;
+	String word = str;
     String newWord = "";
     char c;
     int newIndex;
