@@ -66,12 +66,38 @@ public class Algebra {  	public static void main(String args[]) {
 	// Returns x1 * x2 
 	
     public static int times(int x1, int x2) {
-	  int total=0;
-	    for (int i=0; i<x2; i++)
-	     {
-	    	total = plus(total,x1);
-	     }
-	   return total;	
+	  // quick zero check
+    if (x1 == 0 || x2 == 0) {
+        return 0;
+    }
+
+    int a = x1;
+    int b = x2;
+    boolean negative = false;
+
+    // make a positive, track sign
+    if (a < 0) {
+        negative = !negative;
+        a = minus(0, a);    // a = |a|
+    }
+
+    // make b positive, track sign
+    if (b < 0) {
+        negative = !negative;
+        b = minus(0, b);    // b = |b|
+    }
+
+    int total = 0;
+    for (int i = 0; i < b; i++) {
+        total = plus(total, a);
+    }
+
+    // apply final sign
+    if (negative) {
+        total = minus(0, total);   // make negative
+    }
+
+    return total;	
 	 }
 
 	// Returns x^n (for n >= 0)
@@ -87,19 +113,45 @@ public class Algebra {  	public static void main(String args[]) {
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) 
 	{
-      int up = x1;
-	  int down = x2;
-	  int count =0;
-	  if (down <= 0)
-	   {
-	   return 0;
-	   }
-	  while (up >= down)
-	   {
-		up = minus (up, down);
-		count ++;
-	   }
-	   return count;
+       if (x2 == 0) {
+        return 0;
+    }
+
+    // 0 divided by anything is 0
+    if (x1 == 0) {
+        return 0;
+    }
+
+    int a = x1;
+    int b = x2;
+    boolean negative = false;
+
+    // handle sign of a (dividend)
+    if (a < 0) {
+        negative = !negative;
+        a = minus(0, a);   // a = |a|
+    }
+	// handle sign of b (divisor)
+    if (b < 0) {
+        negative = !negative;
+        b = minus(0, b);   
+    }
+
+    int up = a;
+    int down = b;
+    int count = 0;
+
+
+    while (up >= down) {
+        up = minus(up, down);
+        count++;          
+    }
+
+    if (negative) {
+        count = minus(0, count);
+    }
+
+    return count;
     }
 
 // Returns x1 % x2
